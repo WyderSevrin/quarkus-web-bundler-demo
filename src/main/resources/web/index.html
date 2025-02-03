@@ -1,0 +1,32 @@
+<!-- For more information about using html templates,
+see https://docs.quarkiverse.io/quarkus-web-bundler/dev/advanced-guides.html#html-templates -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+
+    <!-- All files in the 'src/main/resources/web/static/' directory are served under the '/static/' prefix-->
+    <link rel="icon" type="image/svg+xml" href="/static/logo.svg"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Web-Bundler</title>
+
+    <!-- This is replaced by the <script> and <style> html code to include your application.
+    For more information about how to use the {#bundle /} tag,
+    see https://docs.quarkiverse.io/quarkus-web-bundler/dev/advanced-guides.html#bundle-tag -->
+    {#bundle /}
+
+</head>
+<body>
+    <header>
+        <app-nav></app-nav>
+    </header>
+
+    <main id="outlet">
+
+    </main>
+    <footer>
+    OpenConcept WorkShop 2025 - ServerSide Rendering
+    </footer>
+</body>
+</html>
