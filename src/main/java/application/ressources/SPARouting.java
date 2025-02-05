@@ -9,6 +9,7 @@ public class SPARouting {
 
     public void init(@Observes Router router) {
         router.get("/*").last().handler(rc -> {
+            //reroute to default route
             rc.reroute("/");
         });
     }

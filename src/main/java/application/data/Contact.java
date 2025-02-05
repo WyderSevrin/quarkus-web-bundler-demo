@@ -2,13 +2,21 @@ package application.data;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
-public class Contact extends AbstractEntity {
+public class Contact {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // The initial value is to account for import.sql demo data ids
+    @SequenceGenerator(name = "idgenerator", initialValue = 1000)
+    @Column(name="id")
+    private Long id;
+
+    @Column(name="version")
+    private int version;
+
     @Column(name="email")
     private String email = "";
 
@@ -16,7 +24,7 @@ public class Contact extends AbstractEntity {
     private String firstname;
 
     @Column (name="last_name")
-    private String lastName;
+    private String lastname;
 
     @ManyToOne
     @JoinColumn(name = "company_id")
@@ -27,25 +35,44 @@ public class Contact extends AbstractEntity {
     private Status status;
 
 
-    @Override
-    public String toString() {
-        return firstname + " " + lastName;
+    public Long getId() {
+        return id;
     }
 
-    public String getFirstName() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstname() {
         return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstname = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public Company getCompany() {
@@ -62,13 +89,5 @@ public class Contact extends AbstractEntity {
 
     public void setStatus(Status status) {
         this.status = status;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }
