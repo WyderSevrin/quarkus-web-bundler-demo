@@ -34,7 +34,6 @@ public class ContactRepository {
 
     @Transactional
     public void save(Contact contact) {
-
         em.persist(em.contains(contact) ? contact : em.merge(contact));
     }
 }

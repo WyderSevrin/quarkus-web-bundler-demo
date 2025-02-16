@@ -19,16 +19,6 @@ import CrmService from "../services/CrmService";
  */
 export class ContactsView extends LitElement {
     static styles = css`
-        p {
-            color: blue
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: 33% 33% 33%;
-            padding: 3px;
-        }
-
         .container > div {
             background-color: #f1f1f1;
             border: 1px solid black;
@@ -51,10 +41,6 @@ export class ContactsView extends LitElement {
         this.loadData().then((response) => {
             this.data = [...response];
             this.initialized = true;
-            console.log(this.data);
-            console.log("then rerender");
-
-
             this.requestUpdate();
         });
     }
