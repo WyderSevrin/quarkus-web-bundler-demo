@@ -19,6 +19,13 @@ import CrmService from "../services/CrmService";
  */
 export class ContactsView extends LitElement {
     static styles = css`
+
+        .container {
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+            padding: 3px;
+        }
+        
         .container > div {
             background-color: #f1f1f1;
             border: 1px solid black;
